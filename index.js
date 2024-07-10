@@ -3,11 +3,13 @@ const dotenv = require('dotenv');
 dotenv.config();
 const mongoose = require('mongoose');
 const app = express();
+const cors= require('cors')
 const Port = 4000
 const userRoute = require('./routes/userRoute')
 const billRoute = require('./routes/billRoute')
 const itemsRoute = require('./routes/itemsRoute')
 app.use(express.json())
+app.use(cors())
 
 app.get('/', function (req, res) {
     res.send('Welcome to Store Management')
