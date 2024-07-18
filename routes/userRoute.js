@@ -21,12 +21,12 @@ router.post("/login", async (req, res) => {
             verified: true
         })
         if (user) {
-            res.send({message:"Login successful",user})
+            res.send({ message: "Login successful", user })
         } else {
             res.send({ message: "Login failed", user })
         }
     } catch (error) {
-
+        res.status(400).json(error)
     }
 })
 
