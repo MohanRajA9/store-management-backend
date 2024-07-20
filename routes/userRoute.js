@@ -4,6 +4,12 @@ const router = express.Router()
 
 router.post("/register", async (req, res) => {
     try {
+        const user = await userModel.findOne({
+            userId: req.body.userId
+        })
+        if(user){
+            res.status(400).send("UserId already exists")
+        }
         const newUser = new userModel({ ...req.body, verified: true })
         await newUser.save()
         res.send("sucessfully created user")
